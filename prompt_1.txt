@@ -1,0 +1,10 @@
+Create a new project in this directory
+Using/install Hono Web App Framework
+Use/install dependencies below:
+a. NodeJS
+b. PostgreSQL
+c. Kysely query builder
+Add other dependencies only if needed to build the app
+Don't to low level or detailed
+Only instructed in high level
+Planning document will be used by Junior Programmer or Low Level AI Model to be implemented
