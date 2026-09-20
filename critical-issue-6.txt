@@ -1,0 +1,9 @@
+critical-issue-6.txt
+poin perbaikan:
+1. Buatkan animasi progress bar untuk mengetahui prosentase penginputan data registrasi mulai dari data daftar Entitas hingga halaman Ketentuan 
+2. Pada registrasi Perangkat Daerah, hapus input 'ID OPD' karena sudah ada automatic increment 'id' pada table 'opd'
+3. Pada registrasi bidang, buatkan automatic increment untuk kolom 'id' pada table 'bidang' sehingga user tidak perlu input id, untuk menghilangkan munculnya error 'Field 'id' doesn't have a default value'
+4. Tambahkan tombol 'Selanjutnya' pada halaman registrasi bidang untuk melanjutkan ke halaman selanjutnya.
+5. Minimal 1 bidang yang diinputkan oleh user pada halaman registrasi bidang.
+6. Apabila belum ada bidang yang diinputkan oleh user pada halaman registrasi bidang, maka user tidak dapat melanjutkan ke halaman selanjutnya.
+7. Kosongkan table 'entitas' dan 'opd' untuk uji coba berikutnya.

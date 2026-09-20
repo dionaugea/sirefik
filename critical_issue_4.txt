@@ -1,0 +1,6 @@
+CRITICAL-ISSUE-4
+1. Reformulasi untuk penginputan data entitas dengan rincian sebagai berikut:
+a. gunakan drop down button untuk memilih Provinsi
+b. berdasarkan data provinsi yang dipilih buatkan drop down button yang berisi regencies yang berada di provinsi tersebut, buatkan auto-complete (data regencies berdasarkan provinsi terlampir)
+c. pada table entitas isikan kolom 'nama' dengan regencies dan kolom 'provinsi' dengan provinsi yang dipilih
+d. pada saat user berhasil login tampilkan heading 'Pemerintah Daerah [nama regencies]' dan di bawah tulisan tersebut tambahkan nama provinsi;

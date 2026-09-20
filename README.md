@@ -8,7 +8,7 @@ This README follows the implementation brief in [issue.md](issue.md).
 
 SIREFIK is a web application for Pemerintah Daerah, starting from Kabupaten Puncak Jaya. It records, verifies, and reports **realisasi fisik dan keuangan** of regional expenditure—especially contracted work packages—so Organisasi Perangkat Daerah (OPD) can replace manual Excel reporting.
 
-It covers the path from master data (entitas, OPD, user, lokasi, sumber dana, kontrak/SPK) through execution (progress fisik, addendum, pembayaran, sanksi/STS, PHO/BAST) to hierarchical verification and periodic RFK reports. The aim is timely, accountable data for pimpinan and for audit of Laporan Realisasi Anggaran (LRA) / Laporan Keuangan Pemerintah Daerah (LKPD).
+It covers the path from master data (entitas, OPD, bidang, user, lokasi, sumber dana, kontrak/SPK) through execution (progress fisik, addendum, pembayaran, sanksi/STS, PHO/BAST) to hierarchical verification and periodic RFK reports. The aim is timely, accountable data for pimpinan and for audit of Laporan Realisasi Anggaran (LRA) / Laporan Keuangan Pemerintah Daerah (LKPD).
 
 ## Goal
 
@@ -18,7 +18,7 @@ Build a single web application that lets Pemda record, verify, and report physic
 
 - Runtime: Node.js
 - HTTP framework: Hono
-- Database: PostgreSQL
+- Database: MySQL
 - Data access: Kysely
 - Packaging: electron-builder
 
@@ -55,7 +55,7 @@ Plus a thin shared kernel (HTTP, auth context, database client). Each module own
 ## Implementation steps
 
 1. Bootstrap the Node.js + TypeScript project in this folder as one Hono web application. Do not scaffold Laravel or PHP.
-2. Connect PostgreSQL and Kysely as the only data access path.
+2. Connect MySQL and Kysely as the only data access path.
 3. Split source into the business modules above plus the shared kernel.
 4. Seed/pre-input master catalogs (jenis belanja, sumber dana, metode PBJ, jenis kontrak, wilayah).
 5. Deliver identity and organization masters, then RFK transactions (kontrak, addendum, pembayaran, STS, prestasi fisik, PHO/BAST).
@@ -154,12 +154,12 @@ flowchart TB
   presentation[PresentationHonoUI]
   business[BusinessModules]
   persistence[PersistenceKysely]
-  database[DatabasePostgreSQL]
+  database[DatabaseMySQL]
 
   presentation --> business --> persistence --> database
 ```
 
-Modules stay isolated inside one Hono app. Presentation calls business; business calls that module's persistence; persistence talks to PostgreSQL through Kysely.
+Modules stay isolated inside one Hono app. Presentation calls business; business calls that module's persistence; persistence talks to MySQL through Kysely.
 
 ### Verval state
 
@@ -173,7 +173,7 @@ stateDiagram-v2
 
 ## Layers
 
-**Database.** PostgreSQL is the system of record for masters, RFK, workflow, and verval audit.
+**Database.** MySQL is the system of record for masters, RFK, workflow, and verval audit. Rows are reserved with an `isDeleted` flag instead of being removed.
 
 **Persistence.** Kysely repositories per module. No raw SQL in handlers. Each module owns its tables.
 
@@ -184,3 +184,13 @@ stateDiagram-v2
 ## Open scope
 
 This document is not exhaustive. Anything not stated here will be added later at any time. Implement only what is written. Do not invent extra product requirements to complete the spec.
+
+## Menjalankan
+
+1. Salin `.env.example` menjadi `.env`.
+2. Nyalakan MySQL di port 3306, kata sandi administrator `root` (contoh: `docker compose up -d`).
+3. `npm install` lalu `npm run dev`.
+4. Buka `http://127.0.0.1:3847`. Kunjungan pertama membuka halaman pendaftaran.
+5. Paket Windows: `npm run pack` menghasilkan `*.exe` di folder `release`.
+
+`npm install` lebih andal di disk lokal (NTFS). Folder Google Drive sering merusak `node_modules`.

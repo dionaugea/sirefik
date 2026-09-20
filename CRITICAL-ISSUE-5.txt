@@ -1,0 +1,24 @@
+CRITICAL-ISSUE-5
+1. Pelajari database yang sudah disempurnakan
+2. Lakukan perubahan beberapa proses bisnis dengan rincian sebagai berikut:
+a. Data entitas adalah data profil pemerintah daerah pada saat registrasi aplikasi
+b. Data OPD adalah data unit organisasi perangkat daerah pada satu pemerintah daerah pada saat registrasi aplikasi
+c. Data Bidang adalah data sub unit pada satu organisasi perangkat daerah pada saat registrasi aplikasi
+d. Data Provinsi adalah data nama provinsi yang dipilih oleh user saat registrasi aplikasi
+e. Data Kabupaten/Kota adalah data nama kabupaten/kota pada satu Provinsi yang dipilih oleh user saat registrasi aplikasi
+f. Data Provinsi dan Kabupaten/Kota yang dipilih oleh user saat registrasi aplikasi tersimpan pada table entitas di database MySQL
+g. Data pada table provinsi, kabupaten_kota_provinsi, desa_Kelurahan merupakan data master yang tidak bisa dihapus atau diubah oleh user maupun sistem
+h. Data user terdiri dari 3 jenis yaitu:
+    - user level administrator sistem
+    - user level staf bidang
+    - user level kepala bidang
+    - user level pimpinan
+3. Masing-masing OPD memiliki 1 orang pimpinan yang bertindak sebagai user level pimpinan
+4. 1 OPD memiliki banyak bidang
+5. Masing-masing Bidang memiliki 1 orang kepala bidang yang bertindak sebagai user level kepala bidang
+6. Masing-masing Bidang juga memiliki banyak staf bidang yang bertindak sebagai user level staf bidang
+7. Pada tahap registrasi aplikasi, pengguna hanya mendaftarkan user level administrator sistem
+8. Masing-masing Bidang mencatat, merekam, dan melaporkan data kegiatan di tingkat Bidang
+9. Bidang menghasilkan laporan realisasi fisik dan keuangan di tingkat Bidang
+10. Bidang yang mempunyai nama Sekretariat mempunyai tambahan fitur yaitu konsolidasi/menggabungkan laporan realisasi fisik dan keuangan di tingkat OPD untuk mendapat persetujuan pimpinan OPD
+11. 1 transaksi pada tabel transaksi_rfk berasosiasi dengan 1 kontrak pada tabel kontrak_perjanjian
