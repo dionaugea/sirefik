@@ -86,12 +86,14 @@ export function sortTh(
   query: ListQuery,
   key: string,
   label: string,
+  extraClass = "",
 ): string {
   const active = query.sort === key;
   const nextDir = active && query.dir === "asc" ? "desc" : "asc";
   const href = `${path}${buildQs(query, { sort: key, dir: nextDir, page: 1 })}`;
   const mark = active ? (query.dir === "asc" ? " ▲" : " ▼") : "";
-  return `<th class="sortable"><a href="${escapeHtml(href)}">${escapeHtml(label)}${mark}</a></th>`;
+  const cls = extraClass ? `sortable ${extraClass}` : "sortable";
+  return `<th class="${cls}"><a href="${escapeHtml(href)}">${escapeHtml(label)}${mark}</a></th>`;
 }
 
 export function renderTableChrome(opts: {

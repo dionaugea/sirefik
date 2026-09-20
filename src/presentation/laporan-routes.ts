@@ -25,7 +25,7 @@ laporanRoutes.get("/laporan", async (c) => {
       body: `<h1>Laporan RFK</h1>
       <div class="grid cols-4">
         <div class="stat"><span class="muted">Paket</span><b>${d.jumlahPaket}</b></div>
-        <div class="stat"><span class="muted">Nilai</span><b>${money(d.totalNilai)}</b></div>
+        <div class="stat"><span class="muted">Nilai</span><b class="money">${money(d.totalNilai)}</b></div>
         <div class="stat"><span class="muted">Fisik</span><b>${num(d.rataFisik)}%</b></div>
         <div class="stat"><span class="muted">Keuangan</span><b>${num(d.rataKeuangan)}%</b></div>
       </div>
@@ -45,8 +45,8 @@ laporanRoutes.get("/laporan", async (c) => {
       }
       <div class="card">
         <h2>Ringkasan kelompok</h2>
-        <table><thead><tr><th>Kode</th><th>Kelompok</th><th>Paket</th><th>Nilai</th></tr></thead>
-        <tbody>${kelompok.map((g) => `<tr><td>${g.kode}</td><td>${g.nama}</td><td>${g.paket}</td><td>${money(g.nilai)}</td></tr>`).join("")}</tbody></table>
+        <table><thead><tr><th>Kode</th><th>Kelompok</th><th>Paket</th><th class="money">Nilai</th></tr></thead>
+        <tbody>${kelompok.map((g) => `<tr><td>${g.kode}</td><td>${g.nama}</td><td>${g.paket}</td><td class="money">${money(g.nilai)}</td></tr>`).join("")}</tbody></table>
       </div>`,
     }),
   );
@@ -61,8 +61,8 @@ laporanRoutes.get("/laporan/kelompok", async (c) => {
       title: "Kelompok belanja",
       user,
       body: `<h1>Laporan menurut kelompok belanja</h1>
-      <table><thead><tr><th>Kode</th><th>Nama</th><th>Paket</th><th>Nilai kontrak</th></tr></thead>
-      <tbody>${kelompok.map((g) => `<tr><td>${g.kode}</td><td>${g.nama}</td><td>${g.paket}</td><td>${money(g.nilai)}</td></tr>`).join("")}</tbody></table>
+      <table><thead><tr><th>Kode</th><th>Nama</th><th>Paket</th><th class="money">Nilai kontrak</th></tr></thead>
+      <tbody>${kelompok.map((g) => `<tr><td>${g.kode}</td><td>${g.nama}</td><td>${g.paket}</td><td class="money">${money(g.nilai)}</td></tr>`).join("")}</tbody></table>
       <p><a class="btn ghost" href="/laporan">Kembali</a></p>`,
     }),
   );
@@ -142,9 +142,9 @@ laporanRoutes.get("/laporan/cetak", async (c) => {
       user,
       body: `<h1>Laporan resmi RFK</h1>
       <p>Pilih Cetak pada peramban, lalu simpan sebagai PDF.</p>
-      <p>Jumlah paket: <b>${d.jumlahPaket}</b> · Nilai: <b>${money(d.totalNilai)}</b></p>
-      <table><thead><tr><th>Kode</th><th>Kelompok</th><th>Paket</th><th>Nilai</th></tr></thead>
-      <tbody>${kelompok.map((g) => `<tr><td>${g.kode}</td><td>${g.nama}</td><td>${g.paket}</td><td>${money(g.nilai)}</td></tr>`).join("")}</tbody></table>
+      <p>Jumlah paket: <b>${d.jumlahPaket}</b> · Nilai: <b class="money">${money(d.totalNilai)}</b></p>
+      <table><thead><tr><th>Kode</th><th>Kelompok</th><th>Paket</th><th class="money">Nilai</th></tr></thead>
+      <tbody>${kelompok.map((g) => `<tr><td>${g.kode}</td><td>${g.nama}</td><td>${g.paket}</td><td class="money">${money(g.nilai)}</td></tr>`).join("")}</tbody></table>
       <p class="actions"><button onclick="window.print()">Cetak / PDF</button></p>`,
     }),
   );

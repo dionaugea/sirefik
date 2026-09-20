@@ -341,7 +341,7 @@ masterRoutes.get("/data-induk/program-kegiatan", async (c) => {
       pagu: (r) => r.pagu_anggaran ?? 0,
     },
   });
-  const head = `<th>No</th>${sortTh(path, q, "kode", "Kode")}${sortTh(path, q, "program", "Program")}${sortTh(path, q, "kegiatan", "Kegiatan")}${sortTh(path, q, "bidang", "Bidang")}${sortTh(path, q, "pagu", "Pagu")}<th></th>`;
+  const head = `<th>No</th>${sortTh(path, q, "kode", "Kode")}${sortTh(path, q, "program", "Program")}${sortTh(path, q, "kegiatan", "Kegiatan")}${sortTh(path, q, "bidang", "Bidang")}${sortTh(path, q, "pagu", "Pagu", "money")}<th></th>`;
   const body = pageRows
     .map(
       (r, i) => `<tr>
@@ -350,7 +350,7 @@ masterRoutes.get("/data-induk/program-kegiatan", async (c) => {
         <td>${escapeHtml(r.program)}</td>
         <td>${escapeHtml(r.kegiatan)}</td>
         <td>${escapeHtml(bidangName(r.bidang_id))}</td>
-        <td>${money(r.pagu_anggaran ?? 0)}</td>
+        <td class="money">${money(r.pagu_anggaran ?? 0)}</td>
         ${actionButtons(`${path}/${r.id}/ubah`, `${path}/${r.id}/hapus`)}
       </tr>`,
     )

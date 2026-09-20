@@ -239,13 +239,14 @@ export function escapeHtml(value: string): string {
     .replaceAll('"', "&quot;");
 }
 
+/** Tampilan rupiah: Rp1.234.567,89 (titik ribuan, koma desimal). */
 export function money(n: number | string): string {
   const v = typeof n === "string" ? Number(n) : n;
-  return new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR",
-    maximumFractionDigits: 0,
-  }).format(Number.isFinite(v) ? v : 0);
+  const amount = Number.isFinite(v) ? Number(v) : 0;
+  const negative = amount < 0;
+  const [integer, fraction] = Math.abs(amount).toFixed(2).split(".");
+  const grouped = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return `${negative ? "-" : ""}Rp${grouped},${fraction}`;
 }
 
 export function num(n: number | string): string {

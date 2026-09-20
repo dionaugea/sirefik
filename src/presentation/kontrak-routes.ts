@@ -41,7 +41,7 @@ kontrakRoutes.get("/kontrak", async (c) => {
       body: `<h1>Data Kontrak</h1>
       <p class="lead">Daftar kontrak/SPK perjanjian.</p>
       <table>
-        <thead><tr><th>No</th><th>Nomor</th><th>Paket</th><th>Jenis</th><th>Tanggal</th><th>Nilai</th><th></th></tr></thead>
+        <thead><tr><th>No</th><th>Nomor</th><th>Paket</th><th>Jenis</th><th>Tanggal</th><th class="money">Nilai</th><th></th></tr></thead>
         <tbody>${
           rows
             .map(
@@ -51,7 +51,7 @@ kontrakRoutes.get("/kontrak", async (c) => {
               <td>${escapeHtml(r.kontrak_nama_paket)}</td>
               <td>${escapeHtml(jenisNama(r.kontrak_jenis_id))}</td>
               <td>${escapeHtml(isoDate(r.kontrak_tanggal))}</td>
-              <td>${money(r.kontrak_nilai ?? 0)}</td>
+              <td class="money">${money(r.kontrak_nilai ?? 0)}</td>
               <td><a href="/rfk">Lihat RFK</a></td>
             </tr>`,
             )
@@ -92,7 +92,7 @@ kontrakRoutes.get("/kontrak/addendum", async (c) => {
       body: `<h1>Data Addendum</h1>
       <p class="lead">Daftar addendum kontrak perjanjian.</p>
       <table>
-        <thead><tr><th>Nomor</th><th>Tanggal</th><th>Kontrak</th><th>Paket</th><th>Nilai baru</th><th>Uraian</th></tr></thead>
+        <thead><tr><th>Nomor</th><th>Tanggal</th><th>Kontrak</th><th>Paket</th><th class="money">Nilai baru</th><th>Uraian</th></tr></thead>
         <tbody>${
           rows
             .map(
@@ -101,7 +101,7 @@ kontrakRoutes.get("/kontrak/addendum", async (c) => {
               <td>${escapeHtml(isoDate(r.tanggal_addenddum))}</td>
               <td>${escapeHtml(r.kontrak_no)}</td>
               <td>${escapeHtml(r.kontrak_nama_paket)}</td>
-              <td>${money(r.nilai_baru ?? 0)}</td>
+              <td class="money">${money(r.nilai_baru ?? 0)}</td>
               <td>${escapeHtml(r.uraian_addenddum ?? "")}</td>
             </tr>`,
             )
@@ -201,14 +201,14 @@ kontrakRoutes.get("/kontrak/pembayaran", async (c) => {
       body: `<h1>Data Pembayaran</h1>
       <p class="lead">Daftar termin pembayaran kontrak.</p>
       <table>
-        <thead><tr><th>Termin</th><th>Tanggal</th><th>Nilai</th><th>Kontrak</th><th>Paket</th><th>Uraian</th><th></th></tr></thead>
+        <thead><tr><th>Termin</th><th>Tanggal</th><th class="money">Nilai</th><th>Kontrak</th><th>Paket</th><th>Uraian</th><th></th></tr></thead>
         <tbody>${
           rows
             .map(
               (r) => `<tr>
               <td>${r.termin}</td>
               <td>${escapeHtml(isoDate(r.tanggal))}</td>
-              <td>${money(r.nilai)}</td>
+              <td class="money">${money(r.nilai)}</td>
               <td>${escapeHtml(r.kontrak_no)}</td>
               <td>${escapeHtml(r.kontrak_nama_paket)}</td>
               <td>${escapeHtml(r.uraian ?? "")}</td>

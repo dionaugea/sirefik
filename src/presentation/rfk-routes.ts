@@ -126,14 +126,14 @@ rfkRoutes.get("/rfk", async (c) => {
       <p class="lead">Paket pekerjaan tingkat bidang yang sudah memiliki kontrak/SPK.</p>
       ${user.role === "staf" ? `<p class="actions"><a class="btn" href="/rfk/baru">Paket baru</a></p>` : ""}
       <table>
-        <thead><tr><th>Nomor</th><th>Paket</th><th>Bidang</th><th>Nilai</th><th>Status</th><th></th></tr></thead>
+        <thead><tr><th>Nomor</th><th>Paket</th><th>Bidang</th><th class="money">Nilai</th><th>Status</th><th></th></tr></thead>
         <tbody>${rows
           .map(
             (r) => `<tr>
               <td>${r.kontrak_no}</td>
               <td>${r.kontrak_nama_paket}</td>
               <td>${r.bidang_nama ?? "—"}</td>
-              <td>${money(r.kontrak_nilai ?? 0)}</td>
+              <td class="money">${money(r.kontrak_nilai ?? 0)}</td>
               <td><span class="badge">${statusLabel[r.verval_status] ?? r.verval_status}</span></td>
               <td><a href="/rfk/${r.id}">Buka</a></td>
             </tr>`,
@@ -387,7 +387,7 @@ rfkRoutes.get("/rfk/:id", async (c) => {
       body: `<h1>${kontrak.kontrak_nama_paket}</h1>
       <p class="lead">${kontrak.kontrak_no} · ${statusLabel[t.verval_status]} ${late ? "· Terlambat" : ""}</p>
       <div class="grid cols-4">
-        <div class="stat"><span class="muted">Nilai berlaku</span><b>${money(nilai)}</b></div>
+        <div class="stat"><span class="muted">Nilai berlaku</span><b class="money">${money(nilai)}</b></div>
         <div class="stat"><span class="muted">Fisik</span><b>${num(pf)}%</b><div class="bar"><span style="width:${pf}%"></span></div></div>
         <div class="stat"><span class="muted">Keuangan</span><b>${num(pk)}%</b><div class="bar gold"><span style="width:${pk}%"></span></div></div>
         <div class="stat"><span class="muted">Selisih fisik−keuangan</span><b>${num(pf - pk)} poin</b></div>
@@ -403,7 +403,7 @@ rfkRoutes.get("/rfk/:id", async (c) => {
 
       <div class="card">
         <h2>Addendum</h2>
-        <table><tbody>${ads.map((a) => `<tr><td>${a.nomor_addenddum}</td><td>${isoDate(a.tanggal_addenddum)}</td><td>${money(a.nilai_baru ?? 0)}</td><td>${a.uraian_addenddum ?? ""}</td></tr>`).join("") || "<tr><td>Belum ada</td></tr>"}</tbody></table>
+        <table><tbody>${ads.map((a) => `<tr><td>${a.nomor_addenddum}</td><td>${isoDate(a.tanggal_addenddum)}</td><td class="money">${money(a.nilai_baru ?? 0)}</td><td>${a.uraian_addenddum ?? ""}</td></tr>`).join("") || "<tr><td>Belum ada</td></tr>"}</tbody></table>
         ${draft ? `<form method="post" action="/rfk/${id}/addendum" class="grid cols-2">
           <div><label>Nomor</label><input name="nomor_addenddum" required></div>
           <div><label>Tanggal</label><input type="date" name="tanggal_addenddum" required></div>
@@ -415,7 +415,7 @@ rfkRoutes.get("/rfk/:id", async (c) => {
 
       <div class="card">
         <h2>Pembayaran (termin)</h2>
-        <table><tbody>${byr.map((a) => `<tr><td>Termin ${a.termin}</td><td>${isoDate(a.tanggal)}</td><td>${money(a.nilai)}</td><td>${a.uraian ?? ""}</td></tr>`).join("") || "<tr><td>Belum ada</td></tr>"}</tbody></table>
+        <table><tbody>${byr.map((a) => `<tr><td>Termin ${a.termin}</td><td>${isoDate(a.tanggal)}</td><td class="money">${money(a.nilai)}</td><td>${a.uraian ?? ""}</td></tr>`).join("") || "<tr><td>Belum ada</td></tr>"}</tbody></table>
         ${draft ? `<form method="post" action="/rfk/${id}/pembayaran" class="grid cols-2">
           <div><label>Termin</label><input type="number" name="termin" min="1" required></div>
           <div><label>Tanggal</label><input type="date" name="tanggal" required></div>
@@ -427,7 +427,7 @@ rfkRoutes.get("/rfk/:id", async (c) => {
 
       <div class="card">
         <h2>STS / denda</h2>
-        <table><tbody>${sts.map((a) => `<tr><td>${a.nomor_sts}</td><td>${isoDate(a.tanggal)}</td><td>${money(a.nilai_kelebihan_bayar_atau_denda)}</td><td>${a.uraian ?? ""}</td></tr>`).join("") || "<tr><td>Belum ada</td></tr>"}</tbody></table>
+        <table><tbody>${sts.map((a) => `<tr><td>${a.nomor_sts}</td><td>${isoDate(a.tanggal)}</td><td class="money">${money(a.nilai_kelebihan_bayar_atau_denda)}</td><td>${a.uraian ?? ""}</td></tr>`).join("") || "<tr><td>Belum ada</td></tr>"}</tbody></table>
         ${draft ? `<form method="post" action="/rfk/${id}/sts" class="grid cols-2">
           <div><label>Nomor STS</label><input name="nomor_sts" required></div>
           <div><label>Tanggal</label><input type="date" name="tanggal" required></div>

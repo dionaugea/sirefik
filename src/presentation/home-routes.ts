@@ -148,9 +148,17 @@ homeRoutes.get("/", requireUser, async (c) => {
     var isMoney = el.getAttribute("data-money") === "1";
     var start = null;
     var dur = 900;
+    function formatRp(n) {
+      var v = Number(n);
+      if (!isFinite(v)) v = 0;
+      var neg = v < 0;
+      var parts = Math.abs(v).toFixed(2).split(".");
+      var grouped = parts[0].replace(/\\B(?=(\\d{3})+(?!\\d))/g, ".");
+      return (neg ? "-" : "") + "Rp" + grouped + "," + parts[1];
+    }
     function fmt(n) {
-      if (isMoney) return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(n);
-      return prefix + new Intl.NumberFormat("id-ID", { maximumFractionDigits: 1 }).format(n) + suffix;
+      if (isMoney) return formatRp(n);
+      return prefix + new Intl.NumberFormat("id-ID", { minimumFractionDigits: 0, maximumFractionDigits: 1 }).format(n) + suffix;
     }
     function tick(ts) {
       if (!start) start = ts;
@@ -193,7 +201,7 @@ homeRoutes.get("/", requireUser, async (c) => {
         </article>
         <article class="kpi-card">
           <span class="muted">Nilai kontrak</span>
-          <b data-kpi="${totalNilai}" data-money="1">Rp 0</b>
+          <b class="money" data-kpi="${totalNilai}" data-money="1">Rp0,00</b>
         </article>
         <article class="kpi-card">
           <span class="muted">Rata-rata fisik</span>
