@@ -1,0 +1,23 @@
+CRITICAL ISSUE #3:
+1. use favicon logo 'SF'
+2. before user input registration, show the responsive landing page with simple gradation background color, show button 'Registration' for registration
+3. in http://127.0.0.1:3847/daftar/entitas:
+a. change label 'Data pemerintah daerah' to 'Data Entitas Pemerintah Daerah'
+b. create auto formatted data to populate 'ID entitas' with format 'SRF-XX' where XX is codering of province number with list below:
+(1. Aceh, 2. Sumatera Utara, 3. Sumatera Barat, 4. Riau, 5. Kepulauan Riau, 6. Jambi, 7. Bengkulu, 8. Sumatera Selatan, 9. Kepulauan Bangka Belitung, 10. Lampung, 11. Banten, 12. DKI Jakarta, 13. Jawa Barat, 14. Jawa Tengah, 15. DI Yogyakarta, 16. Jawa Timur, 17. Bali, 18. Nusa Tenggara Barat, 19. Nusa Tenggara Timur, 20. Kalimantan Barat, 21. Kalimantan Tengah, 22. Kalimantan Selatan, 23. Kalimantan Timur, 24. Kalimantan Utara, 25. Sulawesi Utara, 26. Gorontalo, 27. Sulawesi Tengah, 28. Sulawesi Barat, 29. Sulawesi Selatan, 30. Sulawesi Tenggara, 31. Maluku, 32. Maluku Utara, 33. Papua, 34. Papua Barat, 35. Papua Selatan, 36. Papua Tengah, 37. Papua Pegunungan, 38. Papua Barat Daya)
+hide the 'ID entitas'
+c. create dropdown menu for Provinsi which contains 38 provinces includes: 
+(Aceh, Sumatera Utara, Sumatera Barat, Riau, Kepulauan Riau, Jambi, Bengkulu, Sumatera Selatan, Kepulauan Bangka Belitung, Lampung, Banten, DKI Jakarta, Jawa Barat, Jawa Tengah, DI Yogyakarta, Jawa Timur, Bali, Nusa Tenggara Barat, Nusa Tenggara Timur, Kalimantan Barat, Kalimantan Tengah, Kalimantan Selatan, Kalimantan Timur, Kalimantan Utara, Sulawesi Utara, Gorontalo, Sulawesi Tengah, Sulawesi Barat, Sulawesi Selatan, Sulawesi Tenggara, Maluku, Maluku Utara, Papua, Papua Barat, Papua Selatan, Papua Tengah, Papua Pegunungan, Papua Barat Daya)
+4. for 'Data perangkat daerah' registration page:
+a. change label 'Data perangkat daerah' to 'Data Perangkat Daerah'
+b. change button 'Tambah OPD' label to 'Berikutnya', Input 'Data Perangkat Daerah' should be once, because one user per category only managed one 'Perangkat Daerah/OPD'
+c. add button 'Sebelumnya'
+5. for 'Data Pengguna' registration page
+a. create auto formatted data to populate 'ID pengguna' with format 'USER-X' where X is codering of four user types with list below:
+(Administrator, Staf, Eselon 3, Pimpinan)
+b. create number validation for 'NIP' which 18 min. character length should be inputted with number character only
+c. in the end of user registration page, if user was inputted all user category information, create button 'Ubah' in most right columen in table inputted user data. when clicked, user redirected to clicked active user form 
+d. add button 'Sebelumnya'
+6. for 'Persetujuan syarat dan ketentuan' registration page
+a. change label 'Persetujuan syarat dan ketentuan' to 'Persetujuan Syarat dan Ketentuan'
+b. add button 'Sebelumnya'

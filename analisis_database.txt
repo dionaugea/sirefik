@@ -1,0 +1,15 @@
+Lakukan analisis database, perhatikan hal-hal sebagai berikut:
+1. analisis kolom yang mempunyai nama dan fungsi yang sama
+2. analisis keterhubungan foreign key antar table
+3. kecuali table master seperti table:
+a. jenis_belanja
+b. jenis_kontrak
+c. kab_kota_provinsi
+d. kecamatan_distrik
+e. metode_pbj
+f. kab_kota_provinsi
+g. sumber_dana
+tambahkan kolom is_created, created_at, user_created is_edited, edited_at, user_edited, is_deleted, deleted_at (hapus kolom isDeleted bila sudah ada), user_deleted
+untuk user_created, user_edited, dan user_deleted terhubung dengan table users
+4. jangan merubah atau menghapus kolom/table pada database sirefik
+5. sesuaikan alur proses bisnis aplikasi dengan kolom yang sudah tersedia pada database sirefik, apabila membutuhkan pertanyaan silahkan bertanya dahulu sebelum eksekusi

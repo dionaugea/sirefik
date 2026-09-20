@@ -1,0 +1,20 @@
+critical-issue-8
+1. Pada data induk tambahkan sub menu 'Data Program Kegiatan Bidang' dengan posisi sub menu paling atas. 
+2. Pada data induk untuk sub menu 
+'Data Program Kegiatan Bidang', 
+'Data Sumber Dana', 
+'Data Jenis Belanja', 
+'Data Jenis Kontrak', 
+'Data Metode Pemilihan Penyedia Barang Jasa', 
+dan 'Data PPK/PPTK' buatkan:
+    - nomor urut
+    - pagination per 15, 25 dan 50 row data (bila data lebih dari 15 row data)
+    - pencarian cepat dengan posisi di pojok kanan atas table
+    - sorting kolom (ascending/descending)
+    - kolom paling kanan berisi tombol ubah/hapus
+3. Tambahkan input 'NIP' pada form tambah PPK/PPTK
+4. Tambahkan sub menu 'Data Kontrak' pada menu 'Data Kontrak' dengan urutan sub menu paling atas
+5. Ubah style penulisan Menu 'Realisasi Fisik Keuangan' seperti menu lainnya (bold)
+6. Tambahkan sub menu 'Verifikasi / Validasi' pada menu 'Realisasi Fisik Keuangan'
+7. Data yang ditampilkan pada sub menu 'Verifikasi / Validasi' bersumber dari tabel 'transaksi_rfk' pada database 'sirefik'
+8. Bila sudah ada data pada table 'Verifikasi / Validasi' tambahkan kolom 'Ubah' dan 'Verval Data'.

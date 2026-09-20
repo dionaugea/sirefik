@@ -1,0 +1,10 @@
+CRITICAL ISSUES #2:
+1. ensure that when user first open sirefik web app, its redirect to registration page
+2. registration page includes:
+a. Input data entitas -> data pemerintah daerah -> column -> no, id_entity, provinsi, tahun_berdiri, file_logo_entitas, isDeleted
+b. Input data OPD -> data perangkat daerah -> column -> no, id_opd, id_entity, nama_opd, tugas_fungsi, alamat_kantor, no_telp, email, isDeleted
+c. Input data user/administrator -> staf, eselon 3, dan pimpinan -> column -> no, id_user, nama, nip, jabatan, id_opd, no_telp, email, username, password, date_registered, jenis_user, isDeleted
+4. use soft transition for each input data in registration phases page
+3. Don't populate anything in table before user input data in registration page
+4. In the end of registration page, show user approval to use the web app in terms and condition, declare briefly that app should distributed illegaly and others. use checkbox and submit button.
+5. After user approval redirect to login page.

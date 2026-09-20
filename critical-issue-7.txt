@@ -1,0 +1,20 @@
+critical-issue-7
+1. Ubah landing page user saat berhasil login menjadi dashboard yang menampilkan grafik (buat dummy data untuk grafik)
+2. Ubah konten dashboard menjadi lebih interaktif dan menarik
+3. Buatkan navigation menu sebelah kiri yang menampilkan menu dengan rincian sebagai berikut:
+- Dashboard
+- Data Induk yang terdiri dari:
+    - Data Sumber Dana
+    - Data Jenis Belanja
+    - Data Jenis Kontrak
+    - Data Metode Pemilihan Penyedia Barang Jasa
+    - Data PPK/PPTK
+- Data Kontrak
+    - Data Penyedia Barang Jasa
+    - Data Konsultan Pengawas/MK
+    - Data Addendum
+    - Data PHO/BAST
+    - Data Pembayaran
+- Realisasi Fisik Keuangan
+- Laporan
+    - Laporan Realisasi Fisik Keuangan

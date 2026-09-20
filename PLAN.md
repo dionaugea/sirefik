@@ -16,7 +16,7 @@ One web application so OPD can replace manual Excel RFK reporting: master data �
 | --- | --- |
 | Runtime | Node.js |
 | HTTP / UI | Hono |
-| Database | PostgreSQL |
+| Database | MySQL |
 | Data access | Kysely only (no raw SQL in handlers) |
 | Packaging | electron-builder |
 
@@ -40,7 +40,7 @@ Business modules (rules, use cases)
         ↓
 Persistence (Kysely per module)
         ↓
-PostgreSQL
+MySQL
 ```
 
 ### Modules
@@ -94,13 +94,13 @@ Do one phase at a time. Finish a phase before starting the next.
 ### Phase A — Bootstrap
 
 - Create the Node.js + TypeScript project in this folder as **one** Hono web app.
-- Install Hono, Kysely, PostgreSQL client, and whatever is required to run TypeScript.
+- Install Hono, Kysely, MySQL client, and whatever is required to run TypeScript.
 - App starts and serves a simple Indonesian page (health / home).
 - No Laravel/PHP scaffold.
 
 ### Phase B — Database kernel
 
-- Connect PostgreSQL through Kysely.
+- Connect MySQL through Kysely.
 - Shared DB client lives in Kernel. All modules use it. No second data-access style.
 
 ### Phase C — Module skeleton

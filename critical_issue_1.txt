@@ -1,0 +1,6 @@
+CRITICAL ISSUES:
+1. Change database technology to MySQL from PostgreSQL. We are currently using PostgreSQL for the database. We need to change to MySQL to reduce the cost of the database.
+2. Adjust all database layer, using MySQL only
+3. MySQL administrator password: root
+4. port: 3306
+5. Data deletion technique using flagging 'isDeleted' column (true or false) don't permanently delete data to reserve future needs

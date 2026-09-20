@@ -1,0 +1,56 @@
+{
+  "name": "sirefik",
+  "version": "1.0.0",
+  "description": "Sistem Informasi Realisasi Fisik dan Keuangan",
+  "private": true,
+  "type": "module",
+  "main": "dist/electron-main.js",
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false --include ./public/** src/main.ts",
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "migrate": "tsx src/main.ts --migrate-only",
+    "pack": "npm run build && electron-builder --win nsis",
+    "electron": "npm run build && electron ."
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.0",
+    "dotenv": "^16.4.7",
+    "hono": "^4.7.4",
+    "kysely": "^0.28.2",
+    "mysql2": "^3.23.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "electron": "^34.3.0",
+    "electron-builder": "^25.1.8",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  },
+  "build": {
+    "appId": "id.go.puncakjaya.sirefik",
+    "productName": "SIREFIK",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "public/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "public",
+        "to": "public"
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false
+    }
+  }
+}
